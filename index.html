@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ombra del Don [ODD]</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Reset & global */
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { 
+    font-family: 'Roboto', sans-serif; 
+    background: url('b-g.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #f5d16c; 
+    line-height:1.6;
+  }
+  header { text-align:center; padding:100px 20px; background-color: rgba(0,0,0,0.7); }
+  header img { width:200px; max-width:80%; margin-bottom:20px; }
+  header h1 { font-family: 'Cinzel', serif; font-size: 3.5em; color:#f5d16c; text-shadow:2px 2px 5px #000; }
+  header p { font-size:1.3em; margin-top:10px; color:#f5d16c; }
+
+  section { max-width: 900px; margin:50px auto; padding:20px; background-color: rgba(0,0,0,0.6); border-radius:10px; }
+  section h2 { font-family:'Cinzel', serif; font-size:2em; border-bottom:2px solid #f5d16c; padding-bottom:5px; margin-bottom:20px; }
+  ul { margin-left:20px; }
+  li { margin-bottom:10px; }
+
+  a { color:#f5d16c; text-decoration:none; font-weight:bold; }
+  a:hover { text-decoration:underline; }
+
+  /* Formulaire */
+  form { display:flex; flex-direction:column; }
+  input, textarea, button { margin:10px 0; padding:12px; border:none; border-radius:5px; font-size:1em; }
+  input, textarea { background-color:#1c1c1c; color:#f5d16c; }
+  input:focus, textarea:focus { outline: 2px solid #f5d16c; }
+  button { background-color:#f5d16c; color:#0a0a0a; cursor:pointer; font-weight:bold; transition:0.3s; }
+  button:hover { opacity:0.9; }
+
+  /* Pop-up conditions */
+  #popup { 
+    position:fixed; top:0; left:0; width:100%; height:100%; 
+    background: rgba(0,0,0,0.85); 
+    display:flex; justify-content:center; align-items:center; 
+    color:#f5d16c; font-size:1.1em; padding:20px; z-index:10;
+  }
+  #popup-content { background:#1c1c1c; padding:30px; border-radius:10px; max-width:500px; text-align:center; }
+  #popup button { margin-top:20px; }
+
+  /* Footer */
+  footer { text-align:center; padding:30px 20px; font-size:0.9em; color:#999; }
+  .links a { display:inline-block; margin:10px 15px; }
+
+  /* Responsive */
+  @media(max-width:600px){
+    header h1 { font-size:2.5em; }
+    section { margin:20px; padding:15px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <img src="logo.jpg" alt="Logo Ombra del Don">
+  <h1>Ombra del Don</h1>
+  <p>L’ombre observe, la parole pèse.</p>
+  <button onclick="scrollToForm()">Bghit ndkhol</button>
+</header>
+
+<!-- Lore / Histoire -->
+<section id="lore">
+  <h2>7kayatna</h2>
+  <p>Ombra del Don hiya wa7ed l-famille mafiosa RP li tkhllat men Marco f Car Parking Multiplayer. 
+  L-famille kat3ml 3la l-wafa, s-samt, s-sbr w l-nidam. Kol member kaykhdem f RP mzn w kay7trm l-qawanin. 
+  D-dnya barra ma 3andha 2ahemmiya; ghir li kay7trm l-qawanin dyal l-famille kayb9a f l-jeu w kaytkddar ytrqaa f RP.</p>
+</section>
+
+<!-- Règlement -->
+<section id="reglement">
+  <h2>Qawanin</h2>
+  <ul>
+    <li>Qra l-qawanin 9bl ma tdkhol.</li>
+    <li>7taram w nidam 7ta l-a5ir.</li>
+    <li>Ay hrp, trahison, provocation kaydir : tawjih, Dannato, w ban definitif.</li>
+    <li>Kol ma3loumat mohimma kayna f #information aw f site officiel.</li>
+    <li>S-samt w l-wafa darori.</li>
+  </ul>
+</section>
+
+<!-- Missions -->
+<section id="missions">
+  <h2>Mission w Activités</h2>
+  <ul>
+    <li>Mra9aba f RP w t3lm cod dyal l-famille.</li>
+    <li>Patrouille w 7miyat f jeu.</li>
+    <li>Coordination RP w msa3da f missions collectives.</li>
+    <li>Stratégie RP w t9dima d-actions discreet.</li>
+  </ul>
+</section>
+
+<!-- Formulaire de candidature -->
+<section id="recrutement">
+  <h2>T9dam l-famille</h2>
+  <button onclick="showPopup()">Qra w 9bal l-qawanin</button>
+
+  <div id="popup">
+    <div id="popup-content">
+      <h3>Shorout dyal Ombra del Don</h3>
+      <p>
+        1. Ana qrayt w fhemt l-qawanin.<br>
+        2. Ghadi nkhdem ghir f RP f cadre dyal l-famille.<br>
+        3. Kol violation kaydir tawjih, Dannato aw ban definitif.<br>
+        4. Ana m3ti ma3loumat sahih: pseudo Discord, nom Car Parking, experience RP, WhatsApp.<br>
+      </p>
+      <button onclick="acceptConditions()">Qbal w kml</button>
+    </div>
+  </div>
+
+  <form id="candidature" action="https://formspree.io/f/votre-identifiant" method="POST" style="display:none; margin-top:20px;">
+    <input type="text" name="discord" placeholder="Smiya Discord (eila gama 3andek dir .)" required>
+    <input type="text" name="carparking" placeholder="Smiya fe Car Parking" required>
+    <textarea name="experience" placeholder="Che7al ou nta kat le3ab Car parking" rows="3" required></textarea>
+    <input type="text" name="mafia" placeholder="Kanti men qbl f mafia ? (Oui/Non)" required>
+    <input type="text" name="whatsapp" placeholder="Numéro WhatsApp" required>
+    <button type="submit">Sift l-candidature</button>
+  </form>
+</section>
+
+<!-- Contacts -->
+<section id="contacts">
+  <h2>Contacts officiels</h2>
+  <div class="links">
+    <a href="https://discord.gg/hZFb9u8Eah" target="_blank">Rejoindre Discord</a>
+    <a href="https://chat.whatsapp.com/L8tBaGi14lz0HqccYmASsz" target="_blank">WhatsApp Famille</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  © 2026 Ombra del Don [ODD]. Kol l7o9oq ma7foudin.
+</footer>
+
+<!-- Scripts -->
+<script>
+function showPopup(){
+  document.getElementById('popup').style.display = 'flex';
+}
+function acceptConditions(){
+  document.getElementById('popup').style.display = 'none';
+  document.getElementById('candidature').style.display = 'flex';
+  document.getElementById('candidature').scrollIntoView({behavior: "smooth"});
+}
+function scrollToForm(){
+  document.getElementById('recrutement').scrollIntoView({behavior: "smooth"});
+}
+</script>
+
+</body>
+</html>
+
